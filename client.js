@@ -42,15 +42,18 @@ const employees = [
 
 $(document).ready(readyNow)
 
-console.log( employees );
+function readyNow() {
 
-let employeeBonusArray = [];
-for(let i = 0; i < employees.length; i++) {
-  console.log(employeeBonus(employees[i]));
-  employeeBonusArray.push(employeeBonus(employees[i]));
+  let el = $( "#employeeOut");
+  el.empty();
+  for (let i = 0; i < employeeBonusArray.length; i++) { 
+    el.append(`<li>` + employeeBonusArray[i].name + ' ' + employeeBonusArray[i].percentage + ' ' + employeeBonusArray[i].totalSalary + ' ' + employeeBonusArray[i].bonus + `</li>`)
+
+  }
 }
 
-console.log('employeeBonusArray:', employeeBonusArray);
+console.log( employees );
+
 
 //creates new employee objects
 function Employee(name, bonusPercentage, totalCompensation, totalBonus) {
@@ -59,14 +62,6 @@ function Employee(name, bonusPercentage, totalCompensation, totalBonus) {
   this.totalCompensation = totalCompensation;
   this.totalBonus = totalBonus;
 } //end Employee
-
-//pushes new employee info into new object
-function employeeBonus(obj) {
-  let percentage = bonusCalculation(obj.employeeNumber, obj.reviewRating, Number(obj.annualSalary));
-  let bonus = Math.round( Number(obj.annualSalary) * (percentage/100) );
-  let totalSalary = Number(obj.annualSalary) + bonus;
-  return new Employee( obj.name, percentage, totalSalary, bonus);
-} //end employeeBonus
 
 //calculate bonus percentage
 function bonusCalculation(employeeNumber, rating, annualIncome) {
@@ -94,6 +89,23 @@ function bonusCalculation(employeeNumber, rating, annualIncome) {
   return bonusPercent;
 }//end bonusCalculation
 
+//pushes new employee info into new object
+function employeeBonus(obj) {
+  let percentage = bonusCalculation(obj.employeeNumber, obj.reviewRating, Number(obj.annualSalary));
+  let bonus = Math.round( Number(obj.annualSalary) * (percentage/100) );
+  let totalSalary = Number(obj.annualSalary) + bonus;
+  return new Employee( obj.name, percentage, totalSalary, bonus);
+} //end employeeBonus
+
+let employeeBonusArray = [];
+for(let i = 0; i < employees.length; i++) {
+  console.log(employeeBonus(employees[i]));
+  employeeBonusArray.push(employeeBonus(employees[i]));
+  readyNow();
+}
+
+console.log('employeeBonusArray:', employeeBonusArray);
+
 console.log(bonusCalculation(89068, 1, 35000));
 console.log(bonusCalculation('6243', 5, 75000));
 console.log(employeeBonus(  {
@@ -110,17 +122,5 @@ console.log(employeeBonus({
   reviewRating: 3
 }));
 
-
-function readyNow() {
-
-  let el = $( "#employeeOut");
-  el.empty(); 
-  console.log(el);
-  for (let i = 0; i < employeeBonusArray.length; i++) { 
-    el.append(`<li>` + employeeBonusArray[i].name + ' ' + employeeBonusArray[i].percentage + `</li>`)
-    console.log(el);
-
-  }
-}
 
 

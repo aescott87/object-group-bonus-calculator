@@ -1,0 +1,8 @@
+body {
+    background-image: url(dunder-Mifflin-building-the-office-where-location.jpg);
+    background-size: cover;
+    font-family: 'Major Mono Display', monospace;
+}
+li {
+    font-family: 'Space Mono', monospace;
+}
