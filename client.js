@@ -113,11 +113,13 @@ console.log(employeeBonus({
 }));
 
 
-$(document).ready(readyNow)
+$(document).ready(function() {
+  $('#employeeButton').on('click', readyNow)
+})
 
 function readyNow() {
 
-  console.log('REAY|DYE NOW', employeeBonusArray);
+  console.log('Ready Now', employeeBonusArray);
   
   let el = $( "#employeeOut");
   el.empty();
