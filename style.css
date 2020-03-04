@@ -6,3 +6,7 @@ body {
 li {
     font-family: 'Space Mono', monospace;
 }
+.main-content {
+    background-color: white;
+    opacity: 0.6;
+}

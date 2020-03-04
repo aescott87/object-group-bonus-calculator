@@ -40,17 +40,7 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-$(document).ready(readyNow)
 
-function readyNow() {
-
-  let el = $( "#employeeOut");
-  el.empty();
-  for (let i = 0; i < employeeBonusArray.length; i++) { 
-    el.append(`<li>` + employeeBonusArray[i].name + ' ' + employeeBonusArray[i].percentage + ' ' + employeeBonusArray[i].totalSalary + ' ' + employeeBonusArray[i].bonus + `</li>`)
-
-  }
-}
 
 console.log( employees );
 
@@ -123,4 +113,15 @@ console.log(employeeBonus({
 }));
 
 
+$(document).ready(readyNow)
 
+function readyNow() {
+
+  console.log('REAY|DYE NOW', employeeBonusArray);
+  
+  let el = $( "#employeeOut");
+  el.empty();
+  for (let i = 0; i < employeeBonusArray.length; i++) { 
+    el.append(`<li>` + 'Name: ' + employeeBonusArray[i].name + ' / Percent of Bonus: ' + employeeBonusArray[i].bonusPercentage + '% Total Salary: $' + employeeBonusArray[i].totalCompensation + ' Total Bonus: $' + employeeBonusArray[i].totalBonus + '</li>')
+  }
+}
